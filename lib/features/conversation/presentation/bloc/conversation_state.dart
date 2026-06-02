@@ -2,11 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:deaf_hearing_app/core/widgets/animated_pulse_indicator.dart';
 import 'package:deaf_hearing_app/features/conversation/domain/entities/message.dart';
 
-enum VideoMode {
-  idle,
-  signPlayback,
-  camera,
-}
+enum VideoMode { idle, signPlayback, camera }
 
 class ConversationState extends Equatable {
   final VideoMode videoMode;
@@ -18,7 +14,7 @@ class ConversationState extends Equatable {
   final TranslationResult? currentTranslation;
   final List<double> recordingAmplitudes;
   final bool isSplitScreen;
-
+  final int swipNum;
   const ConversationState({
     this.videoMode = VideoMode.idle,
     this.translationStatus = TranslationStatus.idle,
@@ -29,6 +25,7 @@ class ConversationState extends Equatable {
     this.currentTranslation,
     this.recordingAmplitudes = const [],
     this.isSplitScreen = false,
+    this.swipNum = 2,
   });
 
   ConversationState copyWith({
@@ -41,6 +38,7 @@ class ConversationState extends Equatable {
     TranslationResult? currentTranslation,
     List<double>? recordingAmplitudes,
     bool? isSplitScreen,
+    int? swipNum,
   }) {
     return ConversationState(
       videoMode: videoMode ?? this.videoMode,
@@ -52,19 +50,21 @@ class ConversationState extends Equatable {
       currentTranslation: currentTranslation ?? this.currentTranslation,
       recordingAmplitudes: recordingAmplitudes ?? this.recordingAmplitudes,
       isSplitScreen: isSplitScreen ?? this.isSplitScreen,
+      swipNum: swipNum ?? this.swipNum,
     );
   }
 
   @override
   List<Object?> get props => [
-        videoMode,
-        translationStatus,
-        isRecording,
-        isConnected,
-        isTyping,
-        messages,
-        currentTranslation,
-        recordingAmplitudes,
-        isSplitScreen,
-      ];
+    videoMode,
+    translationStatus,
+    isRecording,
+    isConnected,
+    isTyping,
+    messages,
+    currentTranslation,
+    recordingAmplitudes,
+    isSplitScreen,
+    swipNum,
+  ];
 }

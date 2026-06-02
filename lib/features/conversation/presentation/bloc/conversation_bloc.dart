@@ -12,6 +12,7 @@ class ConversationCubit extends Cubit<ConversationState> {
   final ApiService _apiService;
   final NetworkInfo _networkInfo = NetworkInfo();
   final TtsService _ttsService;
+  int swipnum = 2;
   int _messageCounter = 10;
 
   ConversationCubit(this._audioService, this._apiService, this._ttsService)
@@ -139,5 +140,14 @@ class ConversationCubit extends Cubit<ConversationState> {
       timestamp: DateTime.now(),
     );
     emit(state.copyWith(messages: [msg, ...state.messages]));
+  }
+
+  void swipe() {
+    if (swipnum == 2) {
+      swipnum = 0;
+    } else {
+      swipnum = 2;
+    }
+    emit(state.copyWith(swipNum: swipnum));
   }
 }

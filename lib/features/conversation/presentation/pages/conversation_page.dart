@@ -30,87 +30,89 @@ class ConversationPage extends StatelessWidget {
           child: BlocBuilder<ConversationCubit, ConversationState>(
             builder: (context, state) {
               final cubit = context.read<ConversationCubit>();
-              return Stack(
-                children: [
-                  Column(
-                    children: [
-                      // --- THE DUAL split-console workspace ---
-                      Expanded(
-                        child: Column(
-                          children: [
-                            // 1. DEAF USER'S INTERACTION ZONE
-                            Expanded(
-                              flex: 5,
-                              child: RotatedBox(
-                                quarterTurns: 2,
+              return GestureDetector(
+                onVerticalDragEnd: (details) {
+                  if (details.primaryVelocity! > 50) {
+                    cubit.swipe();
+                  }
+                },
+                child: Stack(
+                  children: [
+                    Column(
+                      children: [
+                        // --- THE DUAL split-console workspace ---
+                        Expanded(
+                          child: Column(
+                            children: [
+                              // 1. DEAF USER'S INTERACTION ZONE
+                              Expanded(
+                                flex: 5,
+                                child: RotatedBox(
+                                  quarterTurns: state.swipNum,
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                      vertical: 8.0,
+                                    ),
+                                    child: DeafUserConsole(state: state),
+                                  ),
+                                ),
+                              ),
+
+                              // 2. GLOWING NEON LASER BEAM
+                              LaserDivider(
+                                state: state,
+                                isTyping: state.isTyping,
+                              ),
+
+                              // 3. HEARING USER'S INTERACTION ZONE
+                              Expanded(
+                                flex: 3,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: 16.0,
                                     vertical: 8.0,
                                   ),
                                   child: GestureDetector(
-                                    onLongPressDown: (details) {
-                                      print("repeating the video");
+                                    onDoubleTapDown: (details) {
+                                      cubit.speakText(
+                                        "بنجرب لو دي احسن طريقة للموضوع ده",
+                                      );
                                     },
-                                    child: DeafUserConsole(state: state),
+
+                                    child: HearingUserConsole(state: state),
                                   ),
                                 ),
                               ),
-                            ),
-
-                            // 2. GLOWING NEON LASER BEAM
-                            LaserDivider(
-                              state: state,
-                              isTyping: state.isTyping,
-                            ),
-
-                            // 3. HEARING USER'S INTERACTION ZONE
-                            Expanded(
-                              flex: 3,
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                  vertical: 8.0,
-                                ),
-                                child: GestureDetector(
-                                  onDoubleTapDown: (details) {
-                                    cubit.speakText(
-                                      "بنجرب لو دي احسن طريقة للموضوع ده",
-                                    );
-                                  },
-
-                                  child: HearingUserConsole(state: state),
-                                ),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 76),
-                    ],
-                  ),
-
-                  // Floating Smart Input Bar Overlay
-                  Positioned(
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: InputBarComponent(),
-                  ),
-
-                  // Floating AI Translation Pulse status
-                  Positioned(
-                    bottom: 86,
-                    right: 20,
-                    child: AnimatedPulseIndicator(
-                      status: state.translationStatus,
-                      onTap: () {
-                        HapticFeedback.lightImpact();
-                        showFrictionlessMetrics(context, state);
-                      },
+                        const SizedBox(height: 76),
+                      ],
                     ),
-                  ),
-                ],
+
+                    // Floating Smart Input Bar Overlay
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: InputBarComponent(),
+                    ),
+
+                    // Floating AI Translation Pulse status
+                    Positioned(
+                      bottom: 86,
+                      right: 20,
+                      child: AnimatedPulseIndicator(
+                        status: state.translationStatus,
+                        onTap: () {
+                          HapticFeedback.lightImpact();
+                          showFrictionlessMetrics(context, state);
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
           ),
