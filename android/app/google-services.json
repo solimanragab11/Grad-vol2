@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "305382544999",
+    "firebase_url": "https://hanzbthalk-aa12c-default-rtdb.firebaseio.com",
+    "project_id": "hanzbthalk-aa12c",
+    "storage_bucket": "hanzbthalk-aa12c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305382544999:android:9d4a99531a94d6b96826c2",
+        "android_client_info": {
+          "package_name": "com.deafhearing.app.deaf_hearing_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrP74BqsliBtIgnVPTdParY8IoX6bOA1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305382544999:android:d3f3eed499bc7f046826c2",
+        "android_client_info": {
+          "package_name": "com.example.hanzbthalk3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305382544999-ihhmkeq2vh6pp6c0hntllhhbd2rd6n51.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hanzbthalk3",
+            "certificate_hash": "30b071d284f8849a3013520894ea280463c27fc1"
+          }
+        },
+        {
+          "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrP74BqsliBtIgnVPTdParY8IoX6bOA1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305382544999:android:2fc10343956bc0776826c2",
+        "android_client_info": {
+          "package_name": "com.example.remaking_booking_app_trail2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrP74BqsliBtIgnVPTdParY8IoX6bOA1o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305382544999-usvt2479qi85uj3ba5s650io6fkc01bc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

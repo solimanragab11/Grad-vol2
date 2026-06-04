@@ -21,6 +21,12 @@ dependencies:
   flutter_sound: ^9.2.0
   flutter_native_splash: ^2.4.5
   video_player: ^2.10.1
+  firebase_core: ^3.10.0
+  cloud_firestore: ^5.6.0
+  firebase_storage: ^12.4.0
+  image_picker: ^1.1.2
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -32,3 +38,6 @@ flutter:
 
   assets:
     - assets/animation/test.mp4
+    - assets/lang/ar.json
+    - assets/lang/en.json
+    - assets/lang/fr.json

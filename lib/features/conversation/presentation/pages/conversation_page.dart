@@ -10,6 +10,9 @@ import 'package:deaf_hearing_app/core/widgets/animated_pulse_indicator.dart';
 import 'package:deaf_hearing_app/features/conversation/presentation/bloc/conversation_bloc.dart';
 import 'package:deaf_hearing_app/features/conversation/presentation/bloc/conversation_state.dart';
 import 'package:deaf_hearing_app/features/conversation/presentation/widgets/input_bar_component.dart';
+import 'package:deaf_hearing_app/features/sign_contribution/presentation/pages/contribution_selection_page.dart';
+import 'package:deaf_hearing_app/features/sign_contribution/presentation/bloc/contribution_cubit.dart';
+import 'package:deaf_hearing_app/features/sign_contribution/data/repositories/contribution_repository_impl.dart';
 
 class ConversationPage extends StatelessWidget {
   const ConversationPage({super.key});
@@ -74,7 +77,7 @@ class ConversationPage extends StatelessWidget {
                                     vertical: 8.0,
                                   ),
                                   child: GestureDetector(
-                                    onDoubleTapDown: (details) {
+                                    onDoubleTap: () {
                                       cubit.speakText(
                                         "بنجرب لو دي احسن طريقة للموضوع ده",
                                       );
@@ -109,6 +112,49 @@ class ConversationPage extends StatelessWidget {
                           HapticFeedback.lightImpact();
                           showFrictionlessMetrics(context, state);
                         },
+                      ),
+                    ),
+
+                    // Floating button to open Sign Contribution System
+                    Positioned(
+                      top: 16,
+                      left: 16,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.3),
+                              blurRadius: 12,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: 24,
+                          child: IconButton(
+                            icon: const Icon(
+                              Icons.volunteer_activism_rounded,
+                              color: AppColors.primary,
+                              size: 24,
+                            ),
+                            onPressed: () {
+                              HapticFeedback.lightImpact();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                    create: (context) => ContributionCubit(
+                                      ContributionRepositoryImpl(),
+                                    )..init(),
+                                    child: const ContributionSelectionPage(),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
                   ],

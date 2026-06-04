@@ -3,7 +3,11 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  cloud_firestore
   connectivity_plus
+  file_selector_windows
+  firebase_core
+  firebase_storage
   flutter_sound
   flutter_tts
   permission_handler_windows
